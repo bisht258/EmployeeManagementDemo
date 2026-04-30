@@ -197,7 +197,7 @@ This project was developed to demonstrate understanding of:
 
 ## 👨‍💻 Author
 
-**Kl Bisht**
+**Vishal Bisht**
 
 * GitHub: https://github.com/bisht258
 
