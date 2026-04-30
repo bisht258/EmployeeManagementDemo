@@ -1,0 +1,46 @@
+@model List<EmployeeMgmtDemo.Models.Employee>
+@using EmployeeMgmtDemo.Models
+@{
+    ViewData["Title"] = "Employees";
+    var depts = ViewBag.Departments as List<Department> ?? new();
+    string DeptName(int id) => depts.FirstOrDefault(d => d.DepartmentId == id)?.DepartmentName ?? "-";
+}
+
+<h3>Employees</h3>
+
+@if (User.IsInRole("Admin"))
+{
+    <a class="btn btn-success btn-sm mb-2" asp-action="Create">Create Employee</a>
+}
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>EmployeeId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Department</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var e in Model)
+    {
+        <tr>
+            <td>@e.EmployeeId</td>
+            <td>@e.FirstName</td>
+            <td>@e.LastName</td>
+            <td>@DeptName(e.DepartmentId)</td>
+            <td class="d-flex gap-1">
+                <a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@e.EmployeeId">Details</a>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@e.EmployeeId">Edit</a>
+                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@e.EmployeeId">Delete</a>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

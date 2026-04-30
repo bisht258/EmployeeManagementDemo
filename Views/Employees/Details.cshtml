@@ -1,0 +1,17 @@
+@model EmployeeMgmtDemo.Models.Employee
+@using EmployeeMgmtDemo.Models
+@{
+    ViewData["Title"] = "Employee Details";
+    var dept = ViewBag.Department as Department;
+}
+
+<h3>Employee Details</h3>
+
+<div class="border p-3" style="max-width:520px;">
+    <div><b>EmployeeId:</b> @Model.EmployeeId</div>
+    <div><b>FirstName:</b> @Model.FirstName</div>
+    <div><b>LastName:</b> @Model.LastName</div>
+    <div><b>Department:</b> @(dept?.DepartmentName ?? "-")</div>
+</div>
+
+<a class="btn btn-outline-primary btn-sm mt-2" asp-action="Index">Back</a>

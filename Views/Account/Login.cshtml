@@ -1,0 +1,40 @@
+@model EmployeeMgmtDemo.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height:70vh;">
+    <div class="card p-4 shadow" style="width:420px;">
+        <h3 class="text-center mb-3">Login</h3>
+
+        <form asp-action="Login" method="post">
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div class="mb-2">
+                <label asp-for="UserId" class="form-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-2">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="text-danger">
+                @Html.ValidationSummary()
+            </div>
+
+            <!-- Changed button color -->
+            <button class="btn btn-success w-100 mt-3" type="submit">
+                Login
+            </button>
+
+            <div class="mt-3 text-center small text-muted">
+                <div><b>Login as Admin</b>: Adminname - admin / Password - Admin@123</div>
+                <div><b>Login as User</b>:  Username - user / Password - User@123</div>
+            </div>
+        </form>
+    </div>
+</div>

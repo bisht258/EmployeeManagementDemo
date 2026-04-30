@@ -1,0 +1,40 @@
+@model EmployeeMgmtDemo.Models.Employee
+@using EmployeeMgmtDemo.Models
+@{
+    ViewData["Title"] = "Edit Employee";
+    var depts = ViewBag.Departments as List<Department> ?? new();
+}
+
+<h3>Edit Employee</h3>
+
+<form asp-action="Edit" method="post" style="max-width:520px;">
+    <input type="hidden" asp-for="EmployeeId" />
+
+    <div class="mb-2">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="DepartmentId" class="form-label">Department</label>
+        <select asp-for="DepartmentId" class="form-select">
+            @foreach (var d in depts)
+            {
+                <option value="@d.DepartmentId" selected="@(d.DepartmentId == Model.DepartmentId)">
+                    @d.DepartmentName
+                </option>
+            }
+        </select>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Update</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+</form>

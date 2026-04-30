@@ -1,0 +1,37 @@
+@model EmployeeMgmtDemo.Models.Employee
+@using EmployeeMgmtDemo.Models
+@{
+    ViewData["Title"] = "Create Employee";
+    var depts = ViewBag.Departments as List<Department> ?? new();
+}
+
+<h3>Create Employee</h3>
+
+<form asp-action="Create" method="post" style="max-width:520px;">
+    <div class="mb-2">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="DepartmentId" class="form-label">Department</label>
+        <select asp-for="DepartmentId" class="form-select">
+            <option value="">-- Select --</option>
+            @foreach (var d in depts)
+            {
+                <option value="@d.DepartmentId">@d.DepartmentName</option>
+            }
+        </select>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-success" type="submit">Save</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+</form>

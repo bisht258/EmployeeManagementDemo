@@ -1,0 +1,21 @@
+@model EmployeeMgmtDemo.Models.Employee
+@using EmployeeMgmtDemo.Models
+@{
+    ViewData["Title"] = "Delete Employee";
+    var dept = ViewBag.Department as Department;
+}
+
+<h3>Delete Employee</h3>
+
+<div class="alert alert-warning" style="max-width:520px;">
+    Are you sure you want to delete:
+    <div class="mt-2">
+        <b>@Model.FirstName @Model.LastName</b> (Dept: @(dept?.DepartmentName ?? "-"))
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="EmployeeId" />
+    <button class="btn btn-danger" type="submit">Yes, Delete</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+</form>

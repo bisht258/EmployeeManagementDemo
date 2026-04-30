@@ -1,0 +1,19 @@
+@model EmployeeMgmtDemo.Models.Department
+@{
+    ViewData["Title"] = "Edit Department";
+}
+
+<h3>Edit Department</h3>
+
+<form asp-action="Edit" method="post" style="max-width:520px;">
+    <input type="hidden" asp-for="DepartmentId" />
+
+    <div class="mb-2">
+        <label asp-for="DepartmentName" class="form-label"></label>
+        <input asp-for="DepartmentName" class="form-control" />
+        <span asp-validation-for="DepartmentName" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Update</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+</form>

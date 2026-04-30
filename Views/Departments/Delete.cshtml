@@ -1,0 +1,17 @@
+@model EmployeeMgmtDemo.Models.Department
+@{
+    ViewData["Title"] = "Delete Department";
+}
+
+<h3>Delete Department</h3>
+
+<div class="alert alert-warning" style="max-width:520px;">
+    Are you sure you want to delete:
+    <div class="mt-2"><b>@Model.DepartmentName</b></div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="DepartmentId" />
+    <button class="btn btn-danger" type="submit">Yes, Delete</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+</form>

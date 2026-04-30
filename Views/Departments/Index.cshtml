@@ -1,0 +1,30 @@
+@model List<EmployeeMgmtDemo.Models.Department>
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h3>Departments</h3>
+<a class="btn btn-success btn-sm mb-2" asp-action="Create">Create Department</a>
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>DepartmentId</th>
+            <th>DepartmentName</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td>@d.DepartmentId</td>
+            <td>@d.DepartmentName</td>
+            <td class="d-flex gap-1">
+                <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@d.DepartmentId">Edit</a>
+                <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@d.DepartmentId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
